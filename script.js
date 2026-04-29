@@ -56,10 +56,10 @@ const black_dice = [
     "Moi, ça me rappelle "
 ];
 const start_sentences = [
-    "J’ai passé une très bonne soirée avec une fée",
-    "Comment j’ai bâti mon immense fortune",
+    "J'ai passé une très bonne soirée avec une fée",
+    "Comment j'ai bâti mon immense fortune",
     "Mon GPS se moque de moi",
-    "Je lis l’avenir dans la purée de pommes de terre",
+    "Je lis l'avenir dans la purée de pommes de terre",
     "Mon cousin parle une langue inconnue",
     "Je vais me marier à Las Vegas, la classe...",
     "C'était un jour pluvieux d'octobre",
@@ -101,60 +101,80 @@ const start_sentences = [
     "Ma collection unique ou monde"
 ];
 let maxBlackDices = 0;
+let blackDiceCount = 0;
+
 function getRandomSentence(sentences) {
     const randomIndex = Math.floor(Math.random() * sentences.length);
     return sentences[randomIndex];
 }
+
 function setDice(text, id) {
     const targetDice = document.getElementById(id);
     if (targetDice) {
         targetDice.textContent = text;
+        // Trigger roll animation
+        targetDice.classList.remove('rolling');
+        void targetDice.offsetWidth; // reflow
+        targetDice.classList.add('rolling');
     }
 }
+
 function handleClickBlackButton() {
     if (maxBlackDices < 3) {
         const blackDices = document.getElementById('blackDices');
         const childDiv = document.createElement('div');
         childDiv.textContent = rollBlackDice();
-        childDiv.id = "black";
-        childDiv.classList.add('column', 'is-1', 'background-black');
+        childDiv.id = "black-" + (++blackDiceCount);
+        childDiv.classList.add('dice-card', 'black');
         blackDices.appendChild(childDiv);
     }
     maxBlackDices += 1;
+    if (maxBlackDices >= 3) {
+        document.getElementById('blackButton').disabled = true;
+    }
 }
+
 function rollBlackDice() {
-    const blackSentence = getRandomSentence(black_dice);
-    return blackSentence;
+    return getRandomSentence(black_dice);
 }
+
 function handleClickGreenButton() {
-    const yellowSentence = getRandomSentence(yellow_dice);
-    const orangeSentence = getRandomSentence(orange_dice);
-    const redSentence = getRandomSentence(red_dice);
-    const purpleSentence = getRandomSentence(purple_dice);
+    const yellowSentence   = getRandomSentence(yellow_dice);
+    const orangeSentence   = getRandomSentence(orange_dice);
+    const redSentence      = getRandomSentence(red_dice);
+    const purpleSentence   = getRandomSentence(purple_dice);
     const lightblueSentence = getRandomSentence(lightblue_dice);
-    const blueSentence = getRandomSentence(blue_dice);
-    const startSentence = getRandomSentence(start_sentences);
-    setDice(yellowSentence, "yellow");
-    setDice(orangeSentence, "orange");
-    setDice(redSentence, "red");
-    setDice(purpleSentence, "purple");
+    const blueSentence     = getRandomSentence(blue_dice);
+    const startSentence    = getRandomSentence(start_sentences);
+
+    setDice(yellowSentence,    "yellow");
+    setDice(orangeSentence,    "orange");
+    setDice(redSentence,       "red");
+    setDice(purpleSentence,    "purple");
     setDice(lightblueSentence, "light-blue");
-    setDice(blueSentence, "blue");
-    setDice(startSentence, "start");
+    setDice(blueSentence,      "blue");
+    setDice(startSentence,     "start");
+
     const blackDices = document.getElementById('blackDices');
     blackDices.textContent = '';
     maxBlackDices = 0;
+    blackDiceCount = 0;
+    document.getElementById('blackButton').disabled = false;
 }
+
 const button = document.getElementById('rollDice');
 if (button) {
     button.addEventListener('click', handleClickGreenButton);
 }
+
 const blackButton = document.getElementById('blackButton');
 if (blackButton) {
     blackButton.addEventListener('click', handleClickBlackButton);
 }
+
 handleClickGreenButton();
-//Affichage des règles
+
+// Rules panel toggle
 const toggleBtn = document.getElementById('toggleBtn');
 const panel = document.getElementById('panel');
 toggleBtn.addEventListener('click', () => {
