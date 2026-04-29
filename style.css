@@ -321,14 +321,50 @@ body {
 }
 .app-footer i { font-style: italic; }
 
+/* ── Dice number badges (mobile only, via data-attr) ── */
+.dice-card .dice-num {
+  display: none;
+}
+
 /* ── Responsive ── */
 @media (max-width: 600px) {
   body { padding: 20px 16px 48px; }
 
-  .dice-row { gap: 24px; }
-  .dice-card { width: 72px; min-height: 72px; font-size: 0.85rem; padding: 8px 6px; border-radius: 10px; }
+  /* 2×3 grid, no arrows */
+  .dice-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    width: 100%;
+  }
+  .dice-arrow { display: none; }
+
+  .dice-card {
+    width: 100%;
+    min-height: 88px;
+    font-size: 0.9rem;
+    padding: 10px 8px 24px;
+    border-radius: 12px;
+    flex-direction: column;
+    position: relative;
+  }
   .dice-card::before { display: none; }
-  .dice-arrow { font-size: 0.9rem; }
+
+  /* Number badge bottom-center */
+  .dice-card .dice-num {
+    display: block;
+    position: absolute;
+    bottom: 6px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    opacity: 0.55;
+    white-space: nowrap;
+  }
+  .dice-card.yellow .dice-num { color: #1a1100; }
 
   .rules-panel.open { max-height: 900px; }
   .rules-gnou { display: none; }

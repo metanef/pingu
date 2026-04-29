@@ -40,7 +40,15 @@
 - 📱 **Fully responsive** — works on mobile, tablet, and desktop
 - 🎲 **Dice roll animations**
 - 📖 **In-app rules panel**
-- 43 unique starting sentences, 6 × 6 story prompts, 6 black interruption prompts
+- 53 unique starting sentences, 6 × 6 story prompts, 6 black interruption prompts
+
+---
+
+## Todo
+
+- **English version**
+- **Clickable rule picture**
+- **Remove line beside rules block**
 
 ---
 

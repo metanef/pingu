@@ -98,7 +98,18 @@ const start_sentences = [
     "Le pique-nique infernal...",
     "En cuisine j'improvise avec n'importe quoi",
     "J'ai jamais pu retirer mes skis",
-    "Ma collection unique ou monde"
+    "Ma collection unique ou monde",
+    "J'ai failli devenir astronaute",
+    "Le jour où j'ai perdu mes clés dans un pays étranger",
+    "Mon voisin est convaincu d'être un vampire",
+    "J'ai essayé de cuisiner un plat de 47 ingrédients",
+    "La fois où j'ai été pris pour quelqu'un d'autre",
+    "Mon chat m'a sauvé la vie, enfin je crois",
+    "J'ai dormi dans un endroit complètement improbable",
+    "Le plus grand malentendu de ma vie",
+    "J'ai reçu un colis qui ne m'était pas destiné",
+    "Ma tentative ratée de devenir influenceur",
+    "Le jour où j'ai rencontré un sosie de moi-même"
 ];
 let maxBlackDices = 0;
 let blackDiceCount = 0;
@@ -111,7 +122,10 @@ function getRandomSentence(sentences) {
 function setDice(text, id) {
     const targetDice = document.getElementById(id);
     if (targetDice) {
+        // Preserve .dice-num span, update only text node
+        const numSpan = targetDice.querySelector('.dice-num');
         targetDice.textContent = text;
+        if (numSpan) targetDice.appendChild(numSpan);
         // Trigger roll animation
         targetDice.classList.remove('rolling');
         void targetDice.offsetWidth; // reflow
