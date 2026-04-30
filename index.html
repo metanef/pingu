@@ -10,39 +10,55 @@
 </head>
 <body>
 
+<!-- Lang switch -->
+<div class="lang-switch" id="langSwitch" title="Switch language">
+  <span class="lang-opt" data-lang="fr">FR</span>
+  <span class="lang-slider"></span>
+  <span class="lang-opt" data-lang="en">EN</span>
+</div>
+
+<!-- Theme switch -->
+<div class="theme-switch" id="themeSwitch" title="Toggle theme">
+  <span class="theme-opt" data-theme="dark">🌙</span>
+  <span class="theme-slider"></span>
+  <span class="theme-opt" data-theme="light">☀️</span>
+</div>
+
 <div class="app-wrapper">
 
   <!-- Header -->
   <header class="app-header">
-    <h1>How I met a Pingu 🐧</h1>
-    <p class="subtitle">Adaptation de <i>Comment j'ai adopté un Gnou</i></p>
+    <h1><span>How I met a Pingu</span> &nbsp;🐧</h1>
+    <p class="subtitle" data-i18n="subtitle"></p>
   </header>
 
   <!-- Actions -->
   <div class="action-bar">
     <button id="toggleBtn" class="btn btn-rules">
-      <span class="mdi mdi-book-open-variant"></span> Règles du jeu
+      <span class="mdi mdi-book-open-variant"></span>
+      <span data-i18n="rulesBtn"></span>
     </button>
     <button id="rollDice" class="btn btn-roll">
-      <span class="mdi mdi-dice-multiple"></span> Lancer les dés
+      <span class="mdi mdi-dice-multiple"></span>
+      <span data-i18n="rollBtn"></span>
     </button>
   </div>
 
   <!-- Rules Panel -->
   <div id="panel" class="rules-panel">
     <div class="rules-meta">
-      <span><span class="mdi mdi-account-multiple"></span> 3–8 joueurs</span>
+      <span><span class="mdi mdi-account-multiple"></span> <span data-i18n="players"></span></span>
       <span><span class="mdi mdi-clock-outline"></span> 15–30 min</span>
     </div>
-    <p>Lancez les dés en cliquant sur le bouton vert.</p>
-    <p>Racontez une histoire grâce à la phrase proposée, en suivant les dés de gauche à droite<span class="no-mobile">, exemple ci-dessous</span> :</p>
+    <p data-i18n="rulesIntro"></p>
+    <p><span data-i18n="rulesHow"></span><span class="no-mobile" data-i18n="rulesHowDesktop"></span> :</p>
     <ul>
-      <li><span class="mdi mdi-dice-1-outline"></span> introduit l'histoire<span class="no-mobile"> (« Tu vas pas me croire… »)</span></li>
-      <li><span class="mdi mdi-dice-2-outline"></span> précise l'histoire<span class="no-mobile"> (« C'est pourquoi… »)</span></li>
-      <li><span class="mdi mdi-dice-3-outline"></span> amène un rebondissement<span class="no-mobile"> (« Le plus drôle… »)</span></li>
-      <li><span class="mdi mdi-dice-4-outline"></span> poursuit la narration<span class="no-mobile"> (« Ah, j'oubliais ! »)</span></li>
-      <li><span class="mdi mdi-dice-5-outline"></span> introduit la conclusion<span class="no-mobile"> (« Et là, patatras ! »)</span></li>
-      <li><span class="mdi mdi-dice-6-outline"></span> conclut<span class="no-mobile"> (« Comme dirait mamie… »)</span></li>
+      <li><span class="mdi mdi-dice-1-outline"></span> <span data-i18n="dice1rule"></span><span class="no-mobile" data-i18n="dice1example"></span></li>
+      <li><span class="mdi mdi-dice-2-outline"></span> <span data-i18n="dice2rule"></span><span class="no-mobile" data-i18n="dice2example"></span></li>
+      <li><span class="mdi mdi-dice-3-outline"></span> <span data-i18n="dice3rule"></span><span class="no-mobile" data-i18n="dice3example"></span></li>
+      <li><span class="mdi mdi-dice-4-outline"></span> <span data-i18n="dice4rule"></span><span class="no-mobile" data-i18n="dice4example"></span></li>
+      <li><span class="mdi mdi-dice-5-outline"></span> <span data-i18n="dice5rule"></span><span class="no-mobile" data-i18n="dice5example"></span></li>
+      <li><span class="mdi mdi-dice-6-outline"></span> <span data-i18n="dice6rule"></span><span class="no-mobile" data-i18n="dice6example"></span></li>
     </ul>
     <div class="rules-gnou">
       <img src="./gnou.png" alt="Exemple de partie" id="gnouImg" class="zoomable">
@@ -55,7 +71,8 @@
       </button>
       <img src="./gnou.png" alt="Exemple de partie" class="lightbox-img">
     </div>
-    <p class="rules-variant"><b>Variante :</b> à tout moment vous pouvez lancer 1 à 3 <span class="mdi mdi-dice-1" style="color:#ccc"></span> noirs, utilisés par les autres joueurs pour interagir avec le conteur en l'obligeant à adapter son histoire.</p>
+
+    <p class="rules-variant"><b data-i18n="variantTitle"></b> <span data-i18n="variantText"></span> <span class="mdi mdi-dice-1" style="color:#ccc"></span> <span data-i18n="variantText2"></span></p>
   </div>
 
   <!-- Start sentence -->
@@ -63,24 +80,24 @@
 
   <!-- Dice row -->
   <div class="dice-row">
-    <div id="yellow"     class="dice-card yellow"><span class="dice-num">1 intro</span></div>
+    <div id="yellow"     class="dice-card yellow"><span class="dice-num" data-i18n="num1"></span></div>
     <span class="mdi mdi-arrow-right dice-arrow"></span>
-    <div id="orange"     class="dice-card orange"><span class="dice-num">2 précise</span></div>
+    <div id="orange"     class="dice-card orange"><span class="dice-num" data-i18n="num2"></span></div>
     <span class="mdi mdi-arrow-right dice-arrow"></span>
-    <div id="red"        class="dice-card red"><span class="dice-num">3 rebond.</span></div>
+    <div id="red"        class="dice-card red"><span class="dice-num" data-i18n="num3"></span></div>
     <span class="mdi mdi-arrow-right dice-arrow"></span>
-    <div id="purple"     class="dice-card purple"><span class="dice-num">4 suite</span></div>
+    <div id="purple"     class="dice-card purple"><span class="dice-num" data-i18n="num4"></span></div>
     <span class="mdi mdi-arrow-right dice-arrow"></span>
-    <div id="light-blue" class="dice-card lblue"><span class="dice-num">5 chute</span></div>
+    <div id="light-blue" class="dice-card lblue"><span class="dice-num" data-i18n="num5"></span></div>
     <span class="mdi mdi-arrow-right dice-arrow"></span>
-    <div id="blue"       class="dice-card blue"><span class="dice-num">6 fin</span></div>
+    <div id="blue"       class="dice-card blue"><span class="dice-num" data-i18n="num6"></span></div>
   </div>
 
   <!-- Black dice -->
   <div class="black-section">
     <div id="rollBlackDices">
       <button id="blackButton" class="btn-black">
-        <span class="mdi mdi-dice-1"></span> Lancer un dé noir
+        <span class="mdi mdi-dice-1"></span> <span data-i18n="blackBtn"></span>
       </button>
     </div>
     <div id="blackDices"></div>
@@ -88,8 +105,8 @@
 
   <!-- Footer -->
   <footer class="app-footer">
-    <p>©&nbsp;<i>Comment j'ai adopté un Gnou</i> — tous droits réservés</p>
-    <p>©&nbsp;2024 webapp v1.4 — made by <i>@metanef</i></p>
+    <p>© <i>Comment j'ai adopté un Gnou</i></p>
+    <p>© 2024 webapp v1.4 — made by <i>@metanef</i></p>
   </footer>
 
 </div>
