@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>How I met a Pingu 🐧</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🐧</text></svg>">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@mdi/font@7.4.47/css/materialdesignicons.min.css">
   <link rel="stylesheet" href="./style.css">
 </head>
@@ -44,7 +45,15 @@
       <li><span class="mdi mdi-dice-6-outline"></span> conclut<span class="no-mobile"> (« Comme dirait mamie… »)</span></li>
     </ul>
     <div class="rules-gnou">
-      <img src="./gnou.png" alt="Exemple de partie">
+      <img src="./gnou.png" alt="Exemple de partie" id="gnouImg" class="zoomable">
+    </div>
+
+    <!-- Lightbox -->
+    <div id="lightbox" class="lightbox" role="dialog" aria-modal="true">
+      <button class="lightbox-close" id="lightboxClose" aria-label="Fermer">
+        <span class="mdi mdi-close"></span>
+      </button>
+      <img src="./gnou.png" alt="Exemple de partie" class="lightbox-img">
     </div>
     <p class="rules-variant"><b>Variante :</b> à tout moment vous pouvez lancer 1 à 3 <span class="mdi mdi-dice-1" style="color:#ccc"></span> noirs, utilisés par les autres joueurs pour interagir avec le conteur en l'obligeant à adapter son histoire.</p>
   </div>
@@ -54,17 +63,17 @@
 
   <!-- Dice row -->
   <div class="dice-row">
-    <div id="yellow"     class="dice-card yellow"><span class="dice-num">① intro</span></div>
+    <div id="yellow"     class="dice-card yellow"><span class="dice-num">1 intro</span></div>
     <span class="mdi mdi-arrow-right dice-arrow"></span>
-    <div id="orange"     class="dice-card orange"><span class="dice-num">② précise</span></div>
+    <div id="orange"     class="dice-card orange"><span class="dice-num">2 précise</span></div>
     <span class="mdi mdi-arrow-right dice-arrow"></span>
-    <div id="red"        class="dice-card red"><span class="dice-num">③ rebond.</span></div>
+    <div id="red"        class="dice-card red"><span class="dice-num">3 rebond.</span></div>
     <span class="mdi mdi-arrow-right dice-arrow"></span>
-    <div id="purple"     class="dice-card purple"><span class="dice-num">④ suite</span></div>
+    <div id="purple"     class="dice-card purple"><span class="dice-num">4 suite</span></div>
     <span class="mdi mdi-arrow-right dice-arrow"></span>
-    <div id="light-blue" class="dice-card lblue"><span class="dice-num">⑤ chute</span></div>
+    <div id="light-blue" class="dice-card lblue"><span class="dice-num">5 chute</span></div>
     <span class="mdi mdi-arrow-right dice-arrow"></span>
-    <div id="blue"       class="dice-card blue"><span class="dice-num">⑥ fin</span></div>
+    <div id="blue"       class="dice-card blue"><span class="dice-num">6 fin</span></div>
   </div>
 
   <!-- Black dice -->

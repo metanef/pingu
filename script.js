@@ -188,7 +188,16 @@ if (blackButton) {
 
 handleClickGreenButton();
 
-// Rules panel toggle
+// Lightbox
+const lightbox      = document.getElementById('lightbox');
+const lightboxClose = document.getElementById('lightboxClose');
+const gnouImg       = document.getElementById('gnouImg');
+
+gnouImg.addEventListener('click', () => lightbox.classList.add('open'));
+lightboxClose.addEventListener('click', e => { e.stopPropagation(); lightbox.classList.remove('open'); });
+lightbox.addEventListener('click', e => { if (e.target !== lightbox.querySelector('.lightbox-img')) lightbox.classList.remove('open'); });
+document.addEventListener('keydown', e => { if (e.key === 'Escape') lightbox.classList.remove('open'); });
+
 const toggleBtn = document.getElementById('toggleBtn');
 const panel = document.getElementById('panel');
 toggleBtn.addEventListener('click', () => {
